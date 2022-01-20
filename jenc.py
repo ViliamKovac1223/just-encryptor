@@ -135,18 +135,18 @@ def decrypt(key, source, options=None):
             source = base64.b64decode(source.encode("latin-1"))
         IV = source[:AES.block_size]
         decryptor = AES.new(key, AES.MODE_CBC, IV)
+        data = decryptor.decrypt(source[AES.block_size:]) # decrypt
     except binascii.Error as e:
         if (options and options.is_verbose):
             print(e)
-        sys.stderr.write("text wasn't encrypted\n")
+        sys.stderr.write("data wasn't encrypted\n")
         return ""
     except ValueError as e:
         if (options and options.is_verbose):
             print(e)
-        sys.stderr.write("text wasn't encrypted\n")
+        sys.stderr.write("data wasn't encrypted\n")
         return ""
 
-    data = decryptor.decrypt(source[AES.block_size:]) # decrypt
     padding = data[-1]
 
     if data[-padding:] != bytes([padding]) * padding:
@@ -166,10 +166,11 @@ def decrypt_file(key, file_name, options=None):
 
         decrypted_data = decrypt(key, file_data,options)
 
-        file_mode = "wb" if (options and options.is_file_binary) else "w"
+        if (decrypted_data != ""):
+            file_mode = "wb" if (options and options.is_file_binary) else "w"
 
-        with open(file_name, file_mode) as f:
-            f.write(decrypted_data)
+            with open(file_name, file_mode) as f:
+                f.write(decrypted_data)
 
 if (__name__ == "__main__"):
     main(sys.argv[1:])
