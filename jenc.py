@@ -49,7 +49,7 @@ def main(argv):
             options.is_password = True
             try:
                 password = str(arg)
-            except ValueError: # error if user didn't pass a index 'n'
+            except ValueError: # error if user didn't pass password after -p flag
                 print("-p flag should follow your password")
                 sys.exit(2)
         if (opt == "-f"):
@@ -58,7 +58,7 @@ def main(argv):
 
             try:
                 file_name = str(arg)
-            except ValueError: # error if user didn't pass a index 'n'
+            except ValueError: # error if user didn't pass file path after -f flag
                 print("-f flag should follow path to the file")
                 sys.exit(2)
 
