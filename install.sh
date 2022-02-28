@@ -1,7 +1,7 @@
 #!/bin/bash
 
 # install dependencies
-pip install pycrypto
+pip install pycryptodome
 
 # check if "$HOME/.local/bin" is in the "$PATH" if no then add it to the "$PATH"
 if [ "$(echo "$PATH" | grep -c "\./local/bin")" -lt 1 ]; then
