@@ -43,12 +43,12 @@ jenc -dp password -f encrypted_secret_file
 -v # verbose mode
 
 # Installation
-In order to execute this file from anywhere you have to have "$HOME/.local/bin" in your "$PATH" (you probably have).
+For automatic dependencies installation you need to have installed pip.
 ```bash
-./install.sh
+sh install.sh
 ```
 
 # Uninstallation
 ```bash
-./uninstall.sh
+sh uninstall.sh
 ```

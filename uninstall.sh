@@ -1,3 +1,3 @@
 #!/bin/sh
 
-rm "$HOME/.local/bin/jenc"
+rm -f "$HOME/.local/bin/jenc"
