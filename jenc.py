@@ -8,6 +8,7 @@ from Crypto.Hash import SHA256
 from Crypto import Random
 import getopt
 import binascii
+from getpass import getpass
 
 class JencOptions:
     def __init__(self, is_encrypting = True, 
@@ -27,6 +28,7 @@ class JencOptions:
 
 def main(argv):
     options = JencOptions()
+    password = None
 
     # check arguments
     try:
@@ -66,9 +68,8 @@ def main(argv):
                 options.is_decoding = False
                 options.is_file_binary = True
 
-    if (not options.is_password): # end program if there was no -p flag
-        help_options()
-        sys.exit(3)
+    if (not options.is_password):
+        password = getpass() # get password from the user in secure way
 
     if (not options.is_file):
         user_input = "".join(sys.stdin.readlines()) # get user input
