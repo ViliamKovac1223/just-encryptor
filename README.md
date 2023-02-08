@@ -7,26 +7,26 @@ jenc supports pipes as any standard unix utility.
 Encrypting standard input
 
 ```bash
-cat secret_file | jenc -p passwod
-echo "secret" | jenc -p password
+cat secret_file | jenc
+echo "secret" | jenc
 ```
 
 Decrypting standard input
 
 ```bash
-cat encrypted_secret_file | jenc -dp passwod
+cat encrypted_secret_file | jenc -d
 ```
 
 Encrypting file
 
 ```bash
-jenc -p password -f secret_file 
+jenc -f secret_file 
 ```
 
 Decrypting file
 
 ```bash
-jenc -dp password -f encrypted_secret_file 
+jenc -d -f encrypted_secret_file 
 ```
 
 # All command options
@@ -36,7 +36,7 @@ jenc -dp password -f encrypted_secret_file
 
 -d # decrypt
 
--p <password> # password to encrypt/decrypt; you have to use this flag
+-p <password> # password to encrypt/decrypt; NOT RECOMMENDED without this flag you will be prompted for password
 
 -f <path_to_the_file> # file to encrypt/decrypt
 
