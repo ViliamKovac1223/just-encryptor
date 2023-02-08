@@ -36,9 +36,9 @@ jenc -d -f encrypted_secret_file
 
 -d # decrypt
 
--p <password> # password to encrypt/decrypt; NOT RECOMMENDED without this flag you will be prompted for password
+-p \<password> # password to encrypt/decrypt; NOT RECOMMENDED without this flag you will be prompted for password
 
--f <path_to_the_file> # file to encrypt/decrypt
+-f \<path_to_the_file> # file to encrypt/decrypt
 
 -v # verbose mode
 
