@@ -69,6 +69,12 @@ def main(argv):
 
     if (not options.is_password):
         password = getpass()  # get password from the user in secure way
+        if options.is_encrypting:
+            # if we encrypt file, make user to repeat a password so we know user didn't do a mistake
+            repeat_password = getpass(prompt="Repeat password: ")
+            if password != repeat_password:
+                print("You provided two different passwords asjdk")
+                exit(0)
 
     if (not options.is_file):
         user_input = "".join(sys.stdin.readlines())  # get user input
